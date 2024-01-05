@@ -16,7 +16,7 @@ const app = express(); // create object/instance of express-class
 
 app.use(express.json()); // to accept json data
 
-app.get("/", (req, res) => {});
+
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
