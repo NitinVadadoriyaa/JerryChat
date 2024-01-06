@@ -12,6 +12,8 @@ import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
 
+import { encrypt, decrypt } from "../Context/EncrDecr";
+
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
@@ -54,6 +56,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         `/api/message/${selectedChat._id}`,
         config
       );
+      // const decryptMessage = decrypt(data);
       setMessages(data);
       setLoading(false);
 
@@ -80,16 +83,20 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             Authorization: `Bearer ${user.token}`,
           },
         };
+        console.log(newMessage);
         setNewMessage("");
+        // first encrypt newMessage
+        const encryptMessage = encrypt(newMessage);
+
         const { data } = await axios.post(
           "/api/message",
           {
-            content: newMessage,
+            content: encryptMessage,
             chatId: selectedChat,
           },
           config
         );
-        socket.emit("new message", data);
+        socket.emit("new message", data); // data is encrypted form
         setMessages([...messages, data]);
       } catch (error) {
         toast({

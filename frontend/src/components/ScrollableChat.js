@@ -1,6 +1,8 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Tooltip } from "@chakra-ui/tooltip";
 import ScrollableFeed from "react-scrollable-feed";
+import { decrypt } from "../Context/EncrDecr";
+
 import {
   isLastMessage,
   isSameSender,
@@ -42,7 +44,7 @@ const ScrollableChat = ({ messages }) => {
                 maxWidth: "75%",
               }}
             >
-              {m.content}
+              {decrypt(m.content)}
             </span>
           </div>
         ))}

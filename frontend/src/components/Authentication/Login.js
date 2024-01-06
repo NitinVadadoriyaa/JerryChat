@@ -7,6 +7,7 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { ChatState } from "../../Context/ChatProvider";
+import { encrypt } from "../../Context/EncrDecr";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -39,6 +40,10 @@ const Login = () => {
           "Content-type": "application/json",
         },
       };
+      // const newEmail = encrypt(email);
+      // const newPassword = encrypt(password);
+
+      console.log("E " + email + " P " + password);
 
       const { data } = await axios.post(
         "/api/user/login",
