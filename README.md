@@ -74,7 +74,7 @@ To run this project, you will need to add the following environment variables to
 `MONGO_URI = 'Your mongodb api'`
 
 
-`JWT_SECRET = "Hunter-Jerry"`
+`JWT_SECRET = "your secret name"`
 
 
 `NODE_ENV = production`
