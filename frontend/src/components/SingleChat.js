@@ -18,6 +18,8 @@ import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 const ENDPOINT = "https://jerrychat.onrender.com/"; // "https://jerrychat.onrender.com/"; -> After deployment
+// const ENDPOINT = "http://127.0.0.1:5000"; // localHost
+
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -86,7 +88,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         console.log(newMessage);
         setNewMessage("");
         // first encrypt newMessage
-        const encryptMessage = encrypt(newMessage);
+        const encryptMessage = encrypt(newMessage, selectedChat._id);
 
         const { data } = await axios.post(
           "/api/message",

@@ -44,7 +44,8 @@ const ScrollableChat = ({ messages }) => {
                 maxWidth: "75%",
               }}
             >
-              {decrypt(m.content)}
+              {/* <span>{m.chat._id}</span> */}
+              {decrypt(m.content, m.chat._id)}
             </span>
           </div>
         ))}
