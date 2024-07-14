@@ -79,6 +79,8 @@ To run this project, you will need to add the following environment variables to
 
 `NODE_ENV = production`
 
+`REACT_APP_SECRET_KEY = 'your number(atleast 10 digit)'`
+
 ## Note
 ``Before runing app make some change.
 
